@@ -1,9 +1,95 @@
-<button class="xpButton" onclick="increaseXP()">
-  <img src="https://www.cleanpng.com/png-pixel-art-sword-with-golden-hilt-8476718/" alt="sword" class="sword-icon" id="swordPlus"> +XP
-</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XP Button</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: gold;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
 
-<button class="xpButton" onclick="decreaseXP()">
-  <img src="https://www.cleanpng.com/png-pixel-art-sword-with-golden-hilt-8476718/" alt="sword" class="sword-icon" id="swordMinus"> -XP
-</button>
+    .xpButton {
+      background-color: darkred;
+      color: gold;
+      font-size: 24px;
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-<div id="xpDisplay">XP: 0</div>
+    .sword-icon {
+      width: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes swordStrike {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(-45deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .strike {
+      animation: swordStrike 0.3s ease;
+    }
+
+    #xpDisplay {
+      font-size: 32px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="xpButton" onclick="increaseXP()">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Sword_icon.svg/512px-Sword_icon.svg.png" alt="sword" class="sword-icon" id="swordPlus"> +XP
+  </button>
+
+  <button class="xpButton" onclick="decreaseXP()">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Sword_icon.svg/512px-Sword_icon.svg.png" alt="sword" class="sword-icon" id="swordMinus"> -XP
+  </button>
+
+  <div id="xpDisplay">XP: 0</div>
+
+  <script>
+    let xp = 0;
+
+    function updateDisplay() {
+      document.getElementById("xpDisplay").innerText = "XP: " + xp;
+    }
+
+    function increaseXP() {
+      xp++;
+      updateDisplay();
+
+      const sword = document.getElementById("swordPlus");
+      sword.classList.add("strike");
+      setTimeout(() => {
+        sword.classList.remove("strike");
+      }, 300);
+    }
+
+    function decreaseXP() {
+      if (xp > 0) {
+        xp--;
+        updateDisplay();
+
+        const sword = document.getElementById("swordMinus");
+        sword.classList.add("strike");
+        setTimeout(() => {
+          sword.classList.remove("strike");
+        }, 300);
+      }
+    }
+  </script>
+
+</body>
+</html>
