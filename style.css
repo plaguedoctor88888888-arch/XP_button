@@ -1,0 +1,41 @@
+body {
+  background-color: #1a1a1a;
+  color: gold;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.xpButton {
+  background-color: darkred;
+  color: gold;
+  font-size: 24px;
+  padding: 15px 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sword-icon {
+  width: 40px;
+  transition: transform 0.3s ease;
+}
+
+@keyframes swordStrike {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-45deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.strike {
+  animation: swordStrike 0.3s ease;
+}
+
+#xpDisplay {
+  font-size: 32px;
+  margin-top: 20px;
+}
